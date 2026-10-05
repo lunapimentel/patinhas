@@ -37,7 +37,12 @@
     
 
         <!-- AQUI ESCREVER O CÓDIGO EM PHP QUE BUSCA OS ANIMAIS NO BANCO E DADOS E EXIBE NAS LINHAS E COLUNAS DA TABELA -->
+        <?php
+        include "db.php";
+        
 
+
+        ?>
 </table>
 
         </div>
