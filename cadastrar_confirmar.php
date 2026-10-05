@@ -25,14 +25,31 @@
             
              <!-- AQUI ESCREVER O CÓDIGO EM PHP QUE CAPTURA OS DADOS DOS ANIMAIS E INSERE NO BANCO DE DADOS -->
            <?php
+           //1 PASSO
            //dados do animal
                 include "db.php";
                 $nome = $_POST["nome"];
-                $espécie = $_POST["espécie"];
+                $especie = $_POST["especie"];
                 $idade = $_POST["idade"];
                 $porte = $_POST["porte"];
-                $descrição = $_POST["descrição"];
-           ?>
+                $descricao = $_POST["descricao"];
+
+            //2 PASSO
+             $sql = "INSERT INTO animais(nome, especie, idade, porte, descricao) VALUES(?,?,?,?,?)";
+        $comando = $conexao->prepare($sql);
+        $comando->bind_param("sssis", $nome, $especie, $idade, $porte, $descricao);
+
+        //3 PASSO
+         if($comando->execute())
+            {
+                echo "<h1>Animal cadastrado</h1>";
+            }
+            else 
+                {
+                    echo "<h1>Não foi possível cadastrar</h1>";
+                }
+        ?>
+
         </div>
     </div>
 
